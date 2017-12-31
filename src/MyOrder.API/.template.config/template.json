@@ -1,12 +1,12 @@
 {
-    "author": "Damien Bowden, Roberto Simonetti, Fabian Gosebrink",
+    "author": "",
     "classifications": [ "Web", "SPA", "Angular" ],
     "name": "ASP.NET Core with Angular and Webpack",
-    "identity": "AngularWebpackVisualStudio",
+    "identity": "MyOrder",
     "shortName": "angularwebapi",
     "tags": {
         "language": "C#"
     },
-    "sourceName": "AngularWebpackVisualStudio",
+    "sourceName": "MyOrder",
     "preferNameDirectory" : "true"
 }

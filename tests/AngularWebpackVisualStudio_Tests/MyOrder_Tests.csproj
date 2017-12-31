@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\AngularWebpackVisualStudio\MyOrder.API.csproj" />
+    <ProjectReference Include="..\..\src\MyOrder.API\MyOrder.API.csproj" />
   </ItemGroup>
 
   <ItemGroup>
