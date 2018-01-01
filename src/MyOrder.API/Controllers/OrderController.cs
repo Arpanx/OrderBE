@@ -77,7 +77,7 @@ namespace AngularWebpackVisualStudio.Controllers
         }
 
         [HttpGet("{id}/items", Name = "GetOrderItems")]
-        public IActionResult GetSchedules(int id)
+        public IActionResult GetOrders(int id)
         {
             IEnumerable<Item> _orderItems = _itemRepository.FindBy(s => s.CreatorId == id);
 

@@ -12,6 +12,7 @@ using MyOrder.API.ViewModels.Mappings;
 using MyOrder.Data;
 using MyOrder.Data.Abstract;
 using MyOrder.Data.Repositories;
+using MyOrder.Service;
 
 namespace Angular2WebpackVisualStudio
 {
@@ -50,6 +51,7 @@ namespace Angular2WebpackVisualStudio
             // Add framework services.
             services.AddScoped<IItemRepository, ItemRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<IOrderService, OrderService>();
 
             // Automapper Configuration
             AutoMapperConfiguration.Configure();
