@@ -10,5 +10,6 @@
 		"OrderContext": "Server=localhost\\SQLEXPRESS01;Database=Order;Trusted_Connection=True;MultipleActiveResultSets=true"
     },
 6) dotnet ef database update  
-7) see  http://localhost:5000
+7) dotnet run
+8) see  http://localhost:5000
 

@@ -13,14 +13,15 @@ using MyOrder.Model;
 namespace AngularWebpackVisualStudio.Controllers
 {
     // [Produces("application/json")]
-    // [Route("api/Schedules")]
+    // [Route("api/items")]
     [Route("api/[controller]")]
     public class ItemController : Microsoft.AspNetCore.Mvc.Controller
     {
-        private IItemRepository _itemRepository;        
-        private IOrderRepository _orderRepository;
+        private readonly IItemRepository _itemRepository;        
+        private readonly IOrderRepository _orderRepository;
         int page = 1;
         int pageSize = 4;
+
         public ItemController(IItemRepository scheduleRepository,                                    
                               IOrderRepository userRepository)
         {
@@ -83,8 +84,6 @@ namespace AngularWebpackVisualStudio.Controllers
 
             if (_item != null)
             {
-
-
                 ItemDetailsViewModel _itemDetailsVM = Mapper.Map<Item, ItemDetailsViewModel>(_item);
 
                 return new OkObjectResult(_itemDetailsVM);
@@ -107,8 +106,6 @@ namespace AngularWebpackVisualStudio.Controllers
             _newItem.DateCreated = DateTime.Now;
 
             _itemRepository.Add(_newItem);
-            _itemRepository.Commit();
-
             _itemRepository.Commit();
 
             item = Mapper.Map<Item, ItemViewModel>(_newItem);

@@ -16,8 +16,8 @@ namespace AngularWebpackVisualStudio.Controllers
     [Route("api/Order")]
     public class OrderController : Controller
     {
-        private IOrderRepository _orderRepository;
-        private IItemRepository _itemRepository;
+        private readonly IOrderRepository _orderRepository;
+        private readonly IItemRepository _itemRepository;
         int page = 1;
         int pageSize = 10;
         public OrderController(IOrderRepository orderRepository,
