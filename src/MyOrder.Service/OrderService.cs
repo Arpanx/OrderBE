@@ -1,6 +1,4 @@
-﻿using MyOrder.API.ViewModels;
-using MyOrder.Data.Abstract;
-using MyOrder.Data.Repositories;
+﻿using MyOrder.Data.Abstract;
 using MyOrder.Model;
 using System;
 using System.Collections.Generic;
