@@ -27,7 +27,7 @@ namespace MyOrder.Data
                 .ToTable("Item");
 
             modelBuilder.Entity<Item>()
-                .Property(s => s.CreatorId)
+                .Property(s => s.OrderId)
                 .IsRequired();
 
             modelBuilder.Entity<Item>()
@@ -47,8 +47,8 @@ namespace MyOrder.Data
                 .HasDefaultValue(OrderStatus.Valid);
 
             modelBuilder.Entity<Item>()
-                .HasOne(s => s.Creator)
-                .WithMany(c => c.ItemsCreated);
+                .HasOne(s => s.Order)
+                .WithMany(c => c.Items);
 
             modelBuilder.Entity<Orders>()
               .ToTable("Orders");

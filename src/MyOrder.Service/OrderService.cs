@@ -30,7 +30,7 @@ namespace MyOrder.Service
         public IEnumerable<Orders> Get(int currentPage, int currentPageSize)
         {
             IEnumerable<Orders> _orders = _orderRepository
-                .AllIncluding(u => u.ItemsCreated)
+                .AllIncluding(u => u.Items)
                 .OrderBy(u => u.Id)
                 .Skip((currentPage - 1) * currentPageSize)
                 .Take(currentPageSize)
@@ -41,7 +41,7 @@ namespace MyOrder.Service
 
         public Orders Get(int id)
         {
-            Orders _order = _orderRepository.GetSingle(u => u.Id == id, u => u.ItemsCreated);
+            Orders _order = _orderRepository.GetSingle(u => u.Id == id, u => u.Items);
 
             return _order;
         }
@@ -82,7 +82,7 @@ namespace MyOrder.Service
             }
             else
             {
-                IEnumerable<Item> _items = _itemRepository.FindBy(s => s.CreatorId == id);
+                IEnumerable<Item> _items = _itemRepository.FindBy(s => s.OrderId == id);
 
                 foreach (var item in _items)
                 {

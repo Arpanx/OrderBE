@@ -26,19 +26,20 @@ namespace MyOrder.Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("CreatorId");
-
                     b.Property<DateTime>("DateCreated")
                         .ValueGeneratedOnAdd()
-                        .HasDefaultValue(new DateTime(2017, 12, 31, 10, 6, 59, 494, DateTimeKind.Local));
+                        .HasDefaultValue(new DateTime(2018, 1, 2, 13, 27, 30, 15, DateTimeKind.Local));
 
                     b.Property<DateTime>("DateUpdated")
                         .ValueGeneratedOnAdd()
-                        .HasDefaultValue(new DateTime(2017, 12, 31, 10, 6, 59, 496, DateTimeKind.Local));
+                        .HasDefaultValue(new DateTime(2018, 1, 2, 13, 27, 30, 17, DateTimeKind.Local));
 
                     b.Property<string>("Description");
 
                     b.Property<string>("Location");
+
+                    b.Property<int?>("OrderId")
+                        .IsRequired();
 
                     b.Property<int>("Status")
                         .ValueGeneratedOnAdd()
@@ -56,7 +57,7 @@ namespace MyOrder.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CreatorId");
+                    b.HasIndex("OrderId");
 
                     b.ToTable("Item");
                 });
@@ -81,9 +82,9 @@ namespace MyOrder.Data.Migrations
 
             modelBuilder.Entity("MyOrder.Model.Item", b =>
                 {
-                    b.HasOne("MyOrder.Model.Orders", "Creator")
-                        .WithMany("ItemsCreated")
-                        .HasForeignKey("CreatorId")
+                    b.HasOne("MyOrder.Model.Orders", "Order")
+                        .WithMany("Items")
+                        .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 #pragma warning restore 612, 618

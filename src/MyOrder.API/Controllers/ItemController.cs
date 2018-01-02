@@ -46,7 +46,7 @@ namespace AngularWebpackVisualStudio.Controllers
             var totalPages = (int)Math.Ceiling((double)totalSchedules / pageSize);
 
             IEnumerable<Item> _schedules = _itemRepository
-                .AllIncluding(s => s.Creator)
+                .AllIncluding(s => s.Order)
                 .OrderBy(s => s.Id)
                 .Skip((currentPage - 1) * currentPageSize)
                 .Take(currentPageSize)
@@ -63,7 +63,7 @@ namespace AngularWebpackVisualStudio.Controllers
         public IActionResult Get(int id)
         {
             Item _schedule = _itemRepository
-                .GetSingle(s => s.Id == id, s => s.Creator);
+                .GetSingle(s => s.Id == id, s => s.Order);
 
             if (_schedule != null)
             {
@@ -80,7 +80,7 @@ namespace AngularWebpackVisualStudio.Controllers
         public IActionResult GetScheduleDetails(int id)
         {
             Item _item = _itemRepository                
-                .GetSingle(s => s.Id == id, s => s.Creator);
+                .GetSingle(s => s.Id == id, s => s.Order);
 
             if (_item != null)
             {

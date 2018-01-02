@@ -30,11 +30,11 @@ namespace MyOrder.Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    CreatorId = table.Column<int>(type: "int", nullable: false),
-                    DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2017, 12, 31, 10, 6, 59, 494, DateTimeKind.Local)),
-                    DateUpdated = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2017, 12, 31, 10, 6, 59, 496, DateTimeKind.Local)),
+                    DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2018, 1, 2, 13, 27, 30, 15, DateTimeKind.Local)),
+                    DateUpdated = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2018, 1, 2, 13, 27, 30, 17, DateTimeKind.Local)),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Location = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    OrderId = table.Column<int>(type: "int", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false, defaultValue: 1),
                     TimeEnd = table.Column<DateTime>(type: "datetime2", nullable: false),
                     TimeStart = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -45,17 +45,17 @@ namespace MyOrder.Data.Migrations
                 {
                     table.PrimaryKey("PK_Item", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Item_Orders_CreatorId",
-                        column: x => x.CreatorId,
+                        name: "FK_Item_Orders_OrderId",
+                        column: x => x.OrderId,
                         principalTable: "Orders",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Item_CreatorId",
+                name: "IX_Item_OrderId",
                 table: "Item",
-                column: "CreatorId");
+                column: "OrderId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

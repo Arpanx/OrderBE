@@ -18,7 +18,8 @@ namespace MyOrder.Model
         public OrderStatus Status { get; set; }
         public DateTime DateCreated { get; set; }
         public DateTime DateUpdated { get; set; }
-        public Orders Creator { get; set; }
-        public int CreatorId { get; set; }        
+        
+        public int? OrderId { get; set; }
+        public Orders Order { get; set; }
     }
 }

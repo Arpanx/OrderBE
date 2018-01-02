@@ -11,7 +11,7 @@ namespace MyOrder.API.ViewModels.Mappings
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<ItemViewModel, Item>()
-                    .ForMember(s => s.Creator, map => map.UseValue("1"));
+                    .ForMember(s => s.Order, map => map.UseValue("1"));
                     //.ForMember(s => s.Attendees, map => map.UseValue(new List<Attendee>()));
 
                 cfg.CreateMap<OrderViewModel, Orders>();

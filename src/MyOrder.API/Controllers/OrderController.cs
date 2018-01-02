@@ -78,7 +78,7 @@ namespace AngularWebpackVisualStudio.Controllers
         [HttpGet("{id}/items", Name = "GetOrderItems")]
         public IActionResult GetOrders(int id)
         {
-            IEnumerable<Item> _orderItems = _itemRepository.FindBy(s => s.CreatorId == id);
+            IEnumerable<Item> _orderItems = _itemRepository.FindBy(s => s.OrderId == id);
 
             if (_orderItems != null)
             {
@@ -149,7 +149,7 @@ namespace AngularWebpackVisualStudio.Controllers
             }
             else
             {                
-                IEnumerable<Item> _items = _itemRepository.FindBy(s => s.CreatorId == id);
+                IEnumerable<Item> _items = _itemRepository.FindBy(s => s.OrderId == id);
 
                 foreach (var schedule in _items)
                 {                    

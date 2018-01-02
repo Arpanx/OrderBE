@@ -1,4 +1,5 @@
 ﻿using MyOrder.API.ViewModels.Validations;
+using MyOrder.Model;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace MyOrder.API.ViewModels
         public string Name { get; set; }
         public string City { get; set; }
         public string Address { get; set; }
-        public int ItemsCreated { get; set; }
+        public int ItemsCount { get; set; }        
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
