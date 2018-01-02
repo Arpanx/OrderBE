@@ -20,7 +20,7 @@ namespace MyOrder.API.ViewModels
         public DateTime DateUpdated { get; set; }
         public string Creator { get; set; }
         public int CreatorId { get; set; }
-        public int[] Attendees { get; set; }
+        // public int[] Attendees { get; set; }
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {

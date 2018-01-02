@@ -15,6 +15,7 @@ namespace MyOrder.Data
             using (var context = new OrderContext(
                serviceProvider.GetRequiredService<DbContextOptions<OrderContext>>()))
             {
+                // InitializeSchedules(context);
                 // Look for any movies.
                 if (context.Orders.Any())
                 {
@@ -25,9 +26,9 @@ namespace MyOrder.Data
             }
         }
 
-private static void InitializeSchedules(OrderContext context)
+        private static void InitializeSchedules(OrderContext context)
         {
-            if(!context.Orders.Any())
+            if (!context.Orders.Any())
             {
                 Orders user_01 = new Orders { Name = "Chris Sakellarios", Address = "Klovskaya strit 10", City = "Kiev" };
 
@@ -48,7 +49,7 @@ private static void InitializeSchedules(OrderContext context)
                 context.SaveChanges();
             }
 
-            if(!context.Orders.Any())
+            if(!context.Items.Any())
             {
                 Item schedule_01 = new Item
                 {
@@ -59,7 +60,7 @@ private static void InitializeSchedules(OrderContext context)
                     Status = OrderStatus.Valid,
                     Type = OrderType.Retail,
                     TimeStart = DateTime.Now.AddHours(4),
-                    TimeEnd = DateTime.Now.AddHours(6)                  
+                    TimeEnd = DateTime.Now.AddHours(6),
                 };
 
                 Item schedule_02 = new Item

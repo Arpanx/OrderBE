@@ -79,7 +79,7 @@ namespace AngularWebpackVisualStudio.Controllers
         [HttpGet("{id}/items", Name = "GetItemsDetails")]
         public IActionResult GetScheduleDetails(int id)
         {
-            Item _item = _itemRepository
+            Item _item = _itemRepository                
                 .GetSingle(s => s.Id == id, s => s.Creator);
 
             if (_item != null)

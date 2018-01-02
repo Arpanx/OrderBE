@@ -9,6 +9,7 @@ using MyOrder.API.Core;
 using MyOrder.API.ViewModels;
 using MyOrder.Data.Abstract;
 using MyOrder.Model;
+using MyOrder.Service;
 
 namespace AngularWebpackVisualStudio.Controllers
 {
@@ -18,13 +19,16 @@ namespace AngularWebpackVisualStudio.Controllers
     {
         private readonly IOrderRepository _orderRepository;
         private readonly IItemRepository _itemRepository;
+        private readonly IOrderService _orderService;
         int page = 1;
         int pageSize = 10;
         public OrderController(IOrderRepository orderRepository,
-                               IItemRepository itemRepository)
+                               IItemRepository itemRepository,
+                               IOrderService orderService)
         {
             _orderRepository = orderRepository;
             _itemRepository = itemRepository;
+            _orderService = orderService;
         }
 
         public IActionResult Get()
@@ -46,12 +50,7 @@ namespace AngularWebpackVisualStudio.Controllers
             var totalOrders = _orderRepository.Count();
             var totalPages = (int)Math.Ceiling((double)totalOrders / pageSize);
 
-            IEnumerable<Orders> _orders = _orderRepository
-                .AllIncluding(u => u.ItemsCreated)
-                .OrderBy(u => u.Id)
-                .Skip((currentPage - 1) * currentPageSize)
-                .Take(currentPageSize)
-                .ToList();
+            IEnumerable<Orders> _orders = _orderService.Get(currentPage, currentPageSize);
 
             IEnumerable<OrderViewModel> _orderVM = Mapper.Map<IEnumerable<Orders>, IEnumerable<OrderViewModel>>(_orders);
 
@@ -63,7 +62,7 @@ namespace AngularWebpackVisualStudio.Controllers
         [HttpGet("{id}", Name = "GetOrder")]
         public IActionResult Get(int id)
         {
-            Orders _order = _orderRepository.GetSingle(u => u.Id == id, u => u.ItemsCreated);
+            Orders _order = _orderService.Get(id);            
 
             if (_order != null)
             {
