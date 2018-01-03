@@ -12,8 +12,8 @@ using System;
 namespace MyOrder.Data.Migrations
 {
     [DbContext(typeof(OrderContext))]
-    [Migration("20180102112730_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20180103134828_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -29,11 +29,11 @@ namespace MyOrder.Data.Migrations
 
                     b.Property<DateTime>("DateCreated")
                         .ValueGeneratedOnAdd()
-                        .HasDefaultValue(new DateTime(2018, 1, 2, 13, 27, 30, 15, DateTimeKind.Local));
+                        .HasDefaultValue(new DateTime(2018, 1, 3, 15, 48, 28, 764, DateTimeKind.Local));
 
                     b.Property<DateTime>("DateUpdated")
                         .ValueGeneratedOnAdd()
-                        .HasDefaultValue(new DateTime(2018, 1, 2, 13, 27, 30, 17, DateTimeKind.Local));
+                        .HasDefaultValue(new DateTime(2018, 1, 3, 15, 48, 28, 765, DateTimeKind.Local));
 
                     b.Property<string>("Description");
 
@@ -42,6 +42,8 @@ namespace MyOrder.Data.Migrations
                     b.Property<int?>("OrderId")
                         .IsRequired();
 
+                    b.Property<string>("ProductName");
+
                     b.Property<int>("Status")
                         .ValueGeneratedOnAdd()
                         .HasDefaultValue(1);
@@ -49,8 +51,6 @@ namespace MyOrder.Data.Migrations
                     b.Property<DateTime>("TimeEnd");
 
                     b.Property<DateTime>("TimeStart");
-
-                    b.Property<string>("Title");
 
                     b.Property<int>("Type")
                         .ValueGeneratedOnAdd()

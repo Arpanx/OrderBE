@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace MyOrder.Data.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -30,15 +30,15 @@ namespace MyOrder.Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2018, 1, 2, 13, 27, 30, 15, DateTimeKind.Local)),
-                    DateUpdated = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2018, 1, 2, 13, 27, 30, 17, DateTimeKind.Local)),
+                    DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2018, 1, 3, 15, 48, 28, 764, DateTimeKind.Local)),
+                    DateUpdated = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2018, 1, 3, 15, 48, 28, 765, DateTimeKind.Local)),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Location = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     OrderId = table.Column<int>(type: "int", nullable: false),
+                    ProductName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Status = table.Column<int>(type: "int", nullable: false, defaultValue: 1),
                     TimeEnd = table.Column<DateTime>(type: "datetime2", nullable: false),
                     TimeStart = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Type = table.Column<int>(type: "int", nullable: false, defaultValue: 4)
                 },
                 constraints: table =>

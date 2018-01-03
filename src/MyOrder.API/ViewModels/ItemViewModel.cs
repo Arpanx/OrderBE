@@ -9,7 +9,7 @@ namespace MyOrder.API.ViewModels
     public class ItemViewModel : IValidatableObject
     {
         public int Id { get; set; }
-        public string Title { get; set; }
+        public string ProductName { get; set; }
         public string Description { get; set; }
         public DateTime TimeStart { get; set; }
         public DateTime TimeEnd { get; set; }
@@ -18,8 +18,9 @@ namespace MyOrder.API.ViewModels
         public string Status { get; set; }
         public DateTime DateCreated { get; set; }
         public DateTime DateUpdated { get; set; }
-        public string Creator { get; set; }
-        public int CreatorId { get; set; }
+        
+        public string Order { get; set; }
+        public int OrderId { get; set; }
         // public int[] Attendees { get; set; }
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)

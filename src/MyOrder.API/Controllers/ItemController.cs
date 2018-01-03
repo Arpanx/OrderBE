@@ -42,21 +42,22 @@ namespace AngularWebpackVisualStudio.Controllers
 
             int currentPage = page;
             int currentPageSize = pageSize;
-            var totalSchedules = _itemRepository.Count();
-            var totalPages = (int)Math.Ceiling((double)totalSchedules / pageSize);
+            var totalItems = _itemRepository.Count();
+            var totalPages = (int)Math.Ceiling((double)totalItems / pageSize);
 
-            IEnumerable<Item> _schedules = _itemRepository
+            IEnumerable<Item> _items = _itemRepository
                 .AllIncluding(s => s.Order)
                 .OrderBy(s => s.Id)
                 .Skip((currentPage - 1) * currentPageSize)
                 .Take(currentPageSize)
                 .ToList();
 
-            Response.AddPagination(page, pageSize, totalSchedules, totalPages);
+            Response.AddPagination(page, pageSize, totalItems, totalPages);
 
-            IEnumerable<ItemViewModel> _schedulesVM = Mapper.Map<IEnumerable<Item>, IEnumerable<ItemViewModel>>(_schedules);
 
-            return new OkObjectResult(_schedulesVM);
+            IEnumerable<ItemViewModel> _itemsVM = Mapper.Map<IEnumerable<Item>, IEnumerable<ItemViewModel>>(_items);
+
+            return new OkObjectResult(_itemsVM);
         }
 
         [HttpGet("{id}", Name = "GetItem")]
@@ -130,7 +131,7 @@ namespace AngularWebpackVisualStudio.Controllers
             }
             else
             {
-                _itemDb.Title = item.Title;
+                _itemDb.ProductName = item.ProductName;
                 _itemDb.Location = item.Location;
                 _itemDb.Description = item.Description;
                 _itemDb.Status = (OrderStatus)Enum.Parse(typeof(OrderStatus), item.Status);

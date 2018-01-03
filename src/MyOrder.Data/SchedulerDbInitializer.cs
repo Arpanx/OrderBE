@@ -53,9 +53,9 @@ namespace MyOrder.Data
             {
                 Item schedule_01 = new Item
                 {
-                    Title = "Meeting",
-                    Description = "Meeting at work with the boss",
-                    Location = "Korai",
+                    ProductName = "Product1",  // Title 
+                    Description = "Nice product1",
+                    Location = "Sklad1",
                     OrderId = 1,
                     Status = OrderStatus.Valid,
                     Type = OrderType.Retail,
@@ -65,9 +65,9 @@ namespace MyOrder.Data
 
                 Item schedule_02 = new Item
                 {
-                    Title = "Coffee",
-                    Description = "Coffee with folks",
-                    Location = "Athens",
+                    ProductName = "Product2",
+                    Description = "Good product2",
+                    Location = "Sklad2",
                     OrderId = 2,
                     Status = OrderStatus.Valid,
                     Type = OrderType.Social,
@@ -78,9 +78,9 @@ namespace MyOrder.Data
 
                 Item schedule_03 = new Item
                 {
-                    Title = "Shopping day",
-                    Description = "Shopping therapy",
-                    Location = "Attica",
+                    ProductName = "Product3",
+                    Description = "Normal product3",
+                    Location = "Sklad3",
                     OrderId = 3,
                     Status = OrderStatus.Valid,
                     Type = OrderType.DillerSilver,
@@ -90,9 +90,9 @@ namespace MyOrder.Data
 
                 Item schedule_04 = new Item
                 {
-                    Title = "Family",
-                    Description = "Thanks giving day",
-                    Location = "Home",
+                    ProductName = "Product4",
+                    Description = "bad product4",
+                    Location = "Sklad4",
                     OrderId = 5,
                     Status = OrderStatus.Valid,
                     Type = OrderType.DillerGold,
@@ -103,9 +103,9 @@ namespace MyOrder.Data
 
                 Item schedule_05 = new Item
                 {
-                    Title = "Friends",
-                    Description = "Friends giving day",
-                    Location = "Home",
+                    ProductName = "Product5",
+                    Description = "Nice product5",
+                    Location = "Sklad5",
                     OrderId = 5,
                     Status = OrderStatus.Cancelled,
                     Type = OrderType.Social,
@@ -116,9 +116,9 @@ namespace MyOrder.Data
 
                 Item schedule_06 = new Item
                 {
-                    Title = "Meeting with the boss and collegues",
-                    Description = "Discuss project planning",
-                    Location = "Office",
+                    ProductName = "Product6",
+                    Description = "Nice product6",
+                    Location = "Sklad6",
                     OrderId = 3,
                     Status = OrderStatus.Cancelled,
                     Type = OrderType.Retail,
@@ -128,9 +128,9 @@ namespace MyOrder.Data
 
                 Item schedule_07 = new Item
                 {
-                    Title = "Scenario presentation",
-                    Description = "Discuss new movie's scenario",
-                    Location = "My special place",
+                    ProductName = "Product7",
+                    Description = "Nice product7",
+                    Location = "Sklad7",
                     OrderId = 6,
                     Status = OrderStatus.Cancelled,
                     Type = OrderType.Retail,

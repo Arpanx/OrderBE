@@ -32,11 +32,6 @@ namespace MyOrder
                     new Orders  { Id = 1, Name = "Megan	Fox", Address = "Bennelong Point, 1", City = "Sidney", Items = new List<Item>() }
                 });
 
-            //IEnumerable <Orders> books = new Orders[] {
-            //  new Orders  { Id = 1, Name = "Megan	Fox", Address = "Bennelong Point, 1", City = "Sidney", Items = new List<Item>() },
-            //  new Orders  { Id = 1, Name = "Megan	Fox", Address = "Bennelong Point, 1", City = "Sidney", Items = new List<Item>() }
-            //};
-
             // Target object
             OrderController controller = new OrderController(mockOrderRepository.Object, mockItemRepository.Object, mockOrderService.Object);
             controller.ControllerContext = new ControllerContext();

@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using MyOrder.Model;
+using System.Collections.Generic;
 
 namespace MyOrder.API.ViewModels.Mappings
 {
@@ -6,10 +8,13 @@ namespace MyOrder.API.ViewModels.Mappings
     {
         public static void Configure()
         {
-            Mapper.Initialize(x =>
+            Mapper.Initialize(cfg =>
             {
-                x.AddProfile<DomainToViewModelMappingProfile>();
-                x.AddProfile<ViewModelToDomainMappingProfile>();
+                cfg.CreateMap<Item, ItemViewModel>()
+                    .ForMember(dest => dest.Order, m => m.MapFrom(src => src.Order.Name ));
+
+                // cfg.AddProfile<DomainToViewModelMappingProfile>();
+                // cfg.AddProfile<ViewModelToDomainMappingProfile>();
             });
         }
     }
