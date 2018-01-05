@@ -19,14 +19,18 @@ namespace AngularWebpackVisualStudio.Controllers
     {
         private readonly IItemRepository _itemRepository;        
         private readonly IOrderRepository _orderRepository;
+        private readonly IMapper _mapper;
         int page = 1;
         int pageSize = 4;
 
         public ItemController(IItemRepository scheduleRepository,                                    
-                              IOrderRepository userRepository)
+                              IOrderRepository userRepository,
+                              IMapper mapper
+            )
         {
             _itemRepository = scheduleRepository;            
             _orderRepository = userRepository;
+            _mapper = mapper;
         }
 
         public IActionResult Get()
@@ -54,8 +58,7 @@ namespace AngularWebpackVisualStudio.Controllers
 
             Response.AddPagination(page, pageSize, totalItems, totalPages);
 
-
-            IEnumerable<ItemViewModel> _itemsVM = Mapper.Map<IEnumerable<Item>, IEnumerable<ItemViewModel>>(_items);
+             IEnumerable<ItemViewModel> _itemsVM = _mapper.Map<IEnumerable<Item>, IEnumerable<ItemViewModel>>(_items);
 
             return new OkObjectResult(_itemsVM);
         }
@@ -85,6 +88,7 @@ namespace AngularWebpackVisualStudio.Controllers
 
             if (_item != null)
             {
+                
                 ItemDetailsViewModel _itemDetailsVM = Mapper.Map<Item, ItemDetailsViewModel>(_item);
 
                 return new OkObjectResult(_itemDetailsVM);

@@ -10,25 +10,15 @@ namespace MyOrder.API.ViewModels.Mappings
     {
         public DomainToViewModelMappingProfile()
         {
+            CreateMap<Item, ItemViewModel>()
+                .ForMember(dest => dest.Order, m => m.MapFrom(src => src.Order.Name));
 
-            var config = new MapperConfiguration(cfg =>
-            {
-                cfg.CreateMap<Item, ItemViewModel>();
-                //.ForMember(dest1 => dest1.Name1, m1 => m1.MapFrom(src1 => src1.Order.Name));
+            // ViewModelToDomainMappingProfile
+            CreateMap<ItemViewModel, Item>()
+                   .ForMember(s => s.Order, map => map.UseValue("1"));
+            //.ForMember(s => s.Attendees, map => map.UseValue(new List<Attendee>()));
 
-                //cfg.CreateMap<Item, ItemDetailsViewModel>()
-                //.ForMember(vm => vm.Creator, map => map.MapFrom(s => s.Order.Name))
-                //.ForMember(vm => vm.Attendees, map => map.UseValue(new List<OrderViewModel>()))
-                //.ForMember(vm => vm.Status, map => map.MapFrom(s => ((OrderStatus)s.Status).ToString()))
-                //.ForMember(vm => vm.Type, map => map.MapFrom(s => ((OrderType)s.Type).ToString()))
-                //.ForMember(vm => vm.Statuses, map => map.UseValue(Enum.GetNames(typeof(OrderStatus)).ToArray()))
-                //.ForMember(vm => vm.Types, map => map.UseValue(Enum.GetNames(typeof(OrderType)).ToArray()));
-
-                cfg.CreateMap<Orders, OrderViewModel>();
-                //.ForMember(vm => vm.Items,  map => map.MapFrom(u => u.Items.Count())); 
-                // You dont need to map the property explicitly, automapper interprets the property name and auto map Projects.Count()
-                // to ProjectsCount
-            });
+            CreateMap<OrderViewModel, Orders>();
         }
     }
 }

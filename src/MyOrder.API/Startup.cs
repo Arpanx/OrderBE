@@ -13,6 +13,7 @@ using MyOrder.Data;
 using MyOrder.Data.Abstract;
 using MyOrder.Data.Repositories;
 using MyOrder.Service;
+using AutoMapper;
 
 namespace Angular2WebpackVisualStudio
 {
@@ -54,11 +55,13 @@ namespace Angular2WebpackVisualStudio
             services.AddScoped<IOrderService, OrderService>();
 
             // Automapper Configuration
-            AutoMapperConfiguration.Configure();
+            // AutoMapperConfiguration.Configure();
 
             // Enable Cors
             services.AddCors();
 
+            services.AddAutoMapper(x => x.AddProfile(new DomainToViewModelMappingProfile()));
+            
             services.AddMvc()
                 .AddJsonOptions(opts =>
                 {
