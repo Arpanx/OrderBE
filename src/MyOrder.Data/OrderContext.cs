@@ -31,14 +31,6 @@ namespace MyOrder.Data
                 .IsRequired();
 
             modelBuilder.Entity<Item>()
-                .Property(s => s.DateCreated)
-                .HasDefaultValue(DateTime.Now);
-
-            modelBuilder.Entity<Item>()
-                .Property(s => s.DateUpdated)
-                .HasDefaultValue(DateTime.Now);
-
-            modelBuilder.Entity<Item>()
                 .Property(s => s.Type)
                 .HasDefaultValue(OrderType.Retail);
 

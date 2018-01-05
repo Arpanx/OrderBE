@@ -15,10 +15,7 @@ namespace MyOrder.API.ViewModels
         public DateTime TimeEnd { get; set; }
         public string Location { get; set; }
         public string Type { get; set; }
-        public string Status { get; set; }
-        public DateTime DateCreated { get; set; }
-        public DateTime DateUpdated { get; set; }
-        
+        public string Status { get; set; }        
         public string Order { get; set; }
         public int OrderId { get; set; }
         // public int[] Attendees { get; set; }

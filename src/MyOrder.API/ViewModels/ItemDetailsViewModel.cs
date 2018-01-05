@@ -13,11 +13,9 @@ namespace MyOrder.API.ViewModels
         public string Location { get; set; }
         public string Type { get; set; }
         public string Status { get; set; }
-        public DateTime DateCreated { get; set; }
-        public DateTime DateUpdated { get; set; }
-        public string Creator { get; set; }
-        public int CreatorId { get; set; }
-        public ICollection<OrderViewModel> Attendees { get; set; }
+        public string Order { get; set; }
+        public int OrderId { get; set; }
+ 
         // Lookups
         public string[] Statuses { get; set; }
         public string[] Types { get; set; }

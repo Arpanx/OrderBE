@@ -20,15 +20,19 @@ namespace AngularWebpackVisualStudio.Controllers
         private readonly IOrderRepository _orderRepository;
         private readonly IItemRepository _itemRepository;
         private readonly IOrderService _orderService;
+        private readonly IMapper _mapper;
+
         int page = 1;
         int pageSize = 10;
         public OrderController(IOrderRepository orderRepository,
                                IItemRepository itemRepository,
-                               IOrderService orderService)
+                               IOrderService orderService,
+                               IMapper mapper)
         {
             _orderRepository = orderRepository;
             _itemRepository = itemRepository;
             _orderService = orderService;
+            _mapper = mapper;
         }
 
         public IActionResult Get()
@@ -52,7 +56,7 @@ namespace AngularWebpackVisualStudio.Controllers
 
             IEnumerable<Orders> _orders = _orderService.Get(currentPage, currentPageSize);
 
-            IEnumerable<OrderViewModel> _orderVM = Mapper.Map<IEnumerable<Orders>, IEnumerable<OrderViewModel>>(_orders);
+            IEnumerable<OrderViewModel> _orderVM = _mapper.Map<IEnumerable<Orders>, IEnumerable<OrderViewModel>>(_orders);
 
             Response.AddPagination(page, pageSize, totalOrders, totalPages);
 
@@ -66,7 +70,7 @@ namespace AngularWebpackVisualStudio.Controllers
 
             if (_order != null)
             {
-                OrderViewModel _userVM = Mapper.Map<Orders, OrderViewModel>(_order);
+                OrderViewModel _userVM = _mapper.Map<Orders, OrderViewModel>(_order);
                 return new OkObjectResult(_userVM);
             }
             else
@@ -82,7 +86,7 @@ namespace AngularWebpackVisualStudio.Controllers
 
             if (_orderItems != null)
             {
-                IEnumerable<ItemViewModel> _orderItemsVM = Mapper.Map<IEnumerable<Item>, IEnumerable<ItemViewModel>>(_orderItems);
+                IEnumerable<ItemViewModel> _orderItemsVM = _mapper.Map<IEnumerable<Item>, IEnumerable<ItemViewModel>>(_orderItems);
                 return new OkObjectResult(_orderItemsVM);
             }
             else
@@ -105,7 +109,7 @@ namespace AngularWebpackVisualStudio.Controllers
             _orderRepository.Add(_newOrder);
             _orderRepository.Commit();
 
-            order = Mapper.Map<Orders, OrderViewModel>(_newOrder);
+            order = _mapper.Map<Orders, OrderViewModel>(_newOrder);
 
             CreatedAtRouteResult result = CreatedAtRoute("GetOrder", new { controller = "Order", id = order.Id }, order);
             return result;
@@ -133,7 +137,7 @@ namespace AngularWebpackVisualStudio.Controllers
                 _orderRepository.Commit();
             }
 
-            order = Mapper.Map<Orders, OrderViewModel>(_orderDb);
+            order = _mapper.Map<Orders, OrderViewModel>(_orderDb);
 
             return new NoContentResult();
         }

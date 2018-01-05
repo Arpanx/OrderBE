@@ -14,11 +14,7 @@ namespace MyOrder.Model
         public DateTime TimeEnd { get; set; }
         public string Location { get; set; }
         public OrderType Type { get; set; }
-
         public OrderStatus Status { get; set; }
-        public DateTime DateCreated { get; set; }
-        public DateTime DateUpdated { get; set; }
-        
         public int? OrderId { get; set; }
         public Orders Order { get; set; }
     }

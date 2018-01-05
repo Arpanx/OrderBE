@@ -66,13 +66,13 @@ namespace AngularWebpackVisualStudio.Controllers
         [HttpGet("{id}", Name = "GetItem")]
         public IActionResult Get(int id)
         {
-            Item _schedule = _itemRepository
+            Item _item = _itemRepository
                 .GetSingle(s => s.Id == id, s => s.Order);
 
-            if (_schedule != null)
+            if (_item != null)
             {
-                ItemViewModel _scheduleVM = Mapper.Map<Item, ItemViewModel>(_schedule);
-                return new OkObjectResult(_scheduleVM);
+                ItemViewModel _itemVM = _mapper.Map<Item, ItemViewModel>(_item);
+                return new OkObjectResult(_itemVM);
             }
             else
             {
@@ -89,7 +89,7 @@ namespace AngularWebpackVisualStudio.Controllers
             if (_item != null)
             {
                 
-                ItemDetailsViewModel _itemDetailsVM = Mapper.Map<Item, ItemDetailsViewModel>(_item);
+                ItemDetailsViewModel _itemDetailsVM = _mapper.Map<Item, ItemDetailsViewModel>(_item);
 
                 return new OkObjectResult(_itemDetailsVM);
             }
@@ -107,13 +107,13 @@ namespace AngularWebpackVisualStudio.Controllers
                 return BadRequest(ModelState);
             }
 
-            Item _newItem = Mapper.Map<ItemViewModel, Item>(item);
-            _newItem.DateCreated = DateTime.Now;
+            Item _newItem = _mapper.Map<ItemViewModel, Item>(item);
+            //_newItem.DateCreated = DateTime.Now;
 
             _itemRepository.Add(_newItem);
             _itemRepository.Commit();
 
-            item = Mapper.Map<Item, ItemViewModel>(_newItem);
+            item = _mapper.Map<Item, ItemViewModel>(_newItem);
 
             CreatedAtRouteResult result = CreatedAtRoute("GetItem", new { controller = "Item", id = item.Id }, item);
             return result;
@@ -146,7 +146,7 @@ namespace AngularWebpackVisualStudio.Controllers
                 _itemRepository.Commit();
             }
 
-            item = Mapper.Map<Item, ItemViewModel>(_itemDb);
+            item = _mapper.Map<Item, ItemViewModel>(_itemDb);
 
             return new NoContentResult();
         }
