@@ -18,18 +18,18 @@ namespace AngularWebpackVisualStudio.Controllers
     public class ItemController : Microsoft.AspNetCore.Mvc.Controller
     {
         private readonly IItemRepository _itemRepository;        
-        private readonly IOrderRepository _orderRepository;
+        // private readonly IOrderRepository _orderRepository;
         private readonly IMapper _mapper;
         int page = 1;
         int pageSize = 4;
 
-        public ItemController(IItemRepository scheduleRepository,                                    
-                              IOrderRepository userRepository,
+        public ItemController(IItemRepository itemRepository,                                    
+                              // IOrderRepository orderRepository,
                               IMapper mapper
             )
         {
-            _itemRepository = scheduleRepository;            
-            _orderRepository = userRepository;
+            _itemRepository = itemRepository;            
+            // _orderRepository = orderRepository;
             _mapper = mapper;
         }
 
