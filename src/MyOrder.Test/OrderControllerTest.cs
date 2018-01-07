@@ -31,7 +31,7 @@ namespace MyOrder
                 .Returns(new Orders[]
                 {
                     new Orders  { Id = 1, Name = "Megan	Fox", Address = "Bennelong Point, 1", City = "Sidney", Items = new List<Item>() },
-                    new Orders  { Id = 1, Name = "Megan	Fox", Address = "Bennelong Point, 1", City = "Sidney", Items = new List<Item>() }
+                    new Orders  { Id = 2, Name = "Megan	Fox", Address = "Bennelong Point, 1", City = "Sidney", Items = new List<Item>() }
                 });
 
             // Target object

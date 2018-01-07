@@ -29,6 +29,7 @@ namespace AngularWebpackVisualStudio.Controllers
                                IOrderService orderService,
                                IMapper mapper)
         {
+            // В планах вынести зависимость от репозитория на слой сервис. И оставить зависимость только от сервисов. 
             _orderRepository = orderRepository;
             _itemRepository = itemRepository;
             _orderService = orderService;
