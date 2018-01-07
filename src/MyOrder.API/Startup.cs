@@ -54,9 +54,6 @@ namespace Angular2WebpackVisualStudio
             services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddScoped<IOrderService, OrderService>();
 
-            // Automapper Configuration
-            // AutoMapperConfiguration.Configure();
-
             // Enable Cors
             services.AddCors();
 
