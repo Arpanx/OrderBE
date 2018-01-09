@@ -14,6 +14,7 @@ using MyOrder.Data.Abstract;
 using MyOrder.Data.Repositories;
 using MyOrder.Service;
 using AutoMapper;
+using MyOrder.API.Core.CSP;
 
 namespace Angular2WebpackVisualStudio
 {
@@ -78,6 +79,8 @@ namespace Angular2WebpackVisualStudio
                  "/about"
              };
 
+            app.UseDeveloperExceptionPage();
+
             app.Use(async (context, next) =>
             {
                 if (context.Request.Path.HasValue && null != angularRoutes.FirstOrDefault(
@@ -88,6 +91,30 @@ namespace Angular2WebpackVisualStudio
 
                 await next();
             });
+
+            app.UseCsp(builder =>
+            {
+                builder.Defaults
+                       .AllowSelf();
+
+                builder.Scripts
+                       .AllowSelf()
+                       .Allow("");
+
+                builder.Styles
+                       .AllowSelf()
+                       .Allow("");
+
+                builder.Fonts
+                       .AllowSelf()
+                       .Allow("");
+
+                builder.Images
+                       .AllowSelf()
+                       .Allow("");
+            });
+
+            
 
             app.UseCors("AllowAllOrigins");
 
